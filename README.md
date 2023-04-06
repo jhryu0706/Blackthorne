@@ -1,7 +1,7 @@
 # How to use
 1. Add files to new_data
 2. Run cleanfilename.py 
-3. Run all_to_xl() to get an excel file with sheets for each factor
+3. Run all_to_xl() in Phase.1 to get an excel file with sheets for each factor
  # Errors/Notes
 [files with errors]
 GF starts 2001
