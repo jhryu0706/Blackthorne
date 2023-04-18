@@ -70,7 +70,7 @@ def factor2(average = False):
     rv.name = 'Factor 2'
     return rv.to_frame()
 
-def _factorHnL(HighorLow=None):
+def _factorHnL(HighorLow=None, Rule='A'):
     """
     This function returns representative basis along with H/L commodities
     for each day.
@@ -92,14 +92,27 @@ def _factorHnL(HighorLow=None):
     for i in range(rb.shape[0]):
         curr = rb.iloc[i]
         temp = curr.dropna().to_list()
-        temp = st.median(temp)
+        if Rule == 'B':
+            temp.sort()
+            h_threshold = temp[-5]
+            l_threshold = temp[4]
+        else:
+            temp = st.median(temp)
         h1 = []
         l1 = []
         for com in rb.columns:
-            if curr[com] > temp:
-                h1.append(com)
-            elif curr[com] < temp:
-                l1.append(com)
+            if Rule == 'B':
+                if curr[com] >= h_threshold:
+                    h1.append(com)
+                elif curr[com] <= l_threshold:
+                    l1.append(com)
+                else:
+                    pass
+            else:
+                if curr[com] > temp:
+                    h1.append(com)
+                elif curr[com] < temp:
+                    l1.append(com)
         dicthl['H'].append(h1)
         dicthl['L'].append(l1)
     return rb, dicthl

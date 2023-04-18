@@ -1,4 +1,4 @@
-from Phase1 import factor1, factor2, factor3, dict
+from Phase1 import factor1, factor2, factor3, dict, _factorHnL
 import numpy as np
 import pandas as pd
 
@@ -56,9 +56,40 @@ def factor2B():
     """
     return factorB_01(f2,'rocp 252 day')
 
-def ufactorA():
+def factorA_0304():
     """
     similar to tfactorB row by row operation, _factorHnL[1] return a list of all
     high and low terms so use that
+    define f which is output of _factorHnL() differently depending on whether A or B
     """
+    f = _factorHnL()
+    dict2 ={}
+    for x in dict.keys():
+        dict2[x]=[]
+    for comm in dict2.keys():
+        for i in range(len(f[1]['H'])):
+            if comm in f[1]['H'][i]:
+                dict2[comm].append(1)
+            else:
+                dict2[comm].append(-1)
+
+    return pd.DataFrame(dict2)
+
+def factorB_0304():
+    f = _factorHnL(Rule='B')
+    dict2 ={}
+    for x in dict.keys():
+        dict2[x]=[]
+    for comm in dict2.keys():
+        for i in range(len(f[1]['H'])):
+            if comm in f[1]['H'][i]:
+                dict2[comm].append(1)
+            elif comm in f[1]['L'][i]:
+                dict2[comm].append(-1)
+            else:
+                dict2[comm].append(0)
+    return pd.DataFrame(dict2)
+
+
+
     
