@@ -1,7 +1,24 @@
 # How to use
-1. Add files to new_data
-2. Run cleanfilename.py 
-3. Run all_to_xl() in Phase.1 to get an excel file with sheets for each factor
+[adding new commodity data]
+    1. Add files to new_data
+    2. Run cleanfilename.py 
+
+[seeing results for In-House Data or Phase1]
+    first open terminal and enter Python environment then run the following commands and choose function depending on the output you are looking for:
+   
+    from Phase1 import __function name goes here__
+    
+    1. separate factors:
+        factor1 -> run factor1():
+        factor2 -> run factor2():
+        factor3 -> run factor3():
+        factor4 -> run factor4():
+
+    2. to see all results:
+        run all_to_xl()
+
+[seeing results for PnL]
+
  # Errors/Notes
 [files with errors]
 GF starts 2001
