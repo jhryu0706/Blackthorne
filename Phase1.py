@@ -7,6 +7,7 @@ from pandas import ExcelWriter
 #to_xlsx
 
 dict = {}
+
 for files in os.listdir('data'):
     #creates a dictionary with key:commodity name, value:df
     dict[files] = pd.read_csv('data/'+files)
@@ -164,7 +165,3 @@ def all_to_xl(truncate = None):
     for i, A in enumerate(all(truncate)):
         A.to_excel(writer,sheet_name="{0}".format(names[i]))
     writer.save()
-
-
-    
-
