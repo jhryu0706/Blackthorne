@@ -6,7 +6,9 @@
 
 ## [seeing results for In-House Data or Phase1]
 
-    first open terminal and enter Python environment. Then run the following commands and choose function depending on the output you are looking for:
+    First open terminal and enter Python environment. 
+    Then run the following commands and choose function 
+    depending on the output you are looking for:
         
         from Phase1 import __function name goes here__
     
