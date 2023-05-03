@@ -172,7 +172,7 @@ factor34A_pnl_df = individual_pnls['Factor A_0304']
 factor34B_pnl_df = individual_pnls['Factor B_0304']
 rvpnl=[factor1A_pnl_df, factor1B_pnl_df, factor2A_pnl_df, factor2B_pnl_df, factor34A_pnl_df, factor34B_pnl_df]
 
-def pnl_to_xl(truncate = None):
+def pnl_to_xl():
     names = ['Factor 1A','Factor 1B','Factor 2A','Factor 2B','Factor34A','Factor34B']
     writer=pd.ExcelWriter('pnl.xlsx')
     for i, A in enumerate(rvpnl):

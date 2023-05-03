@@ -6,12 +6,6 @@ from pandas import ExcelWriter
 # for file in os.listdir('data'):
 #to_xlsx
 
-dict = {}
-
-for files in os.listdir('data'):
-    #creates a dictionary with key:commodity name, value:df
-    dict[files] = pd.read_csv('data/'+files)
-n = len(dict)
 forward = ['forwardTime 1', 'forwardTime 2', 'forwardTime 3', 'forwardTime 4', 'forwardTime 5',
        'forwardTime 6']
 basis = ['basis 1', 'basis 2', 'basis 3', 'basis 4', 'basis 5',
@@ -19,6 +13,12 @@ basis = ['basis 1', 'basis 2', 'basis 3', 'basis 4', 'basis 5',
 #values that do not have rep basis
 w_basis_issue = {}
 
+dict = {}
+
+for files in os.listdir('data'):
+    dict[files] = pd.read_csv('data/'+files)
+
+n = len(dict)
 def rocp(k):
     df1 = {}
     for x in dict:
