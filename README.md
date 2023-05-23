@@ -1,8 +1,13 @@
 # How to use
 ## [adding new commodity data]
 
-    Depending on the file type (csv or xlsx, our group used both) you will need to go through cleanfilename.py and make necessary adjustments such that the data can be processed using Phase1.py and Phase2.py.
-    Simply put, Phase_x_.py will create a dictionary to store data from each file with [key]: [value] being [commodity name]:[data from file] and access data in this manner for all operations
+    Depending on the file type (csv or xlsx, our group used both
+    you will need to go through cleanfilename.py and make necessary
+    adjustments such that the data can be processed using Phase1.py
+    and Phase2.py.
+    Simply put, Phase_x_.py will create a dictionary to store data
+    from each file with [key]: [value] being [commodity name]:[data
+    from file] and access data in this manner for all operations.
 
 ## [seeing results for In-House Data or Phase1]
 
@@ -27,6 +32,7 @@
 
 
  # Errors/Notes
+## [still needs troubleshooting for cumulative pnl]
 ## [files with errors]
 
     GF starts 2001
