@@ -3,22 +3,37 @@ import numpy as np
 import pandas as pd
 import statistics as st
 from pandas import ExcelWriter
+from cleanfilename import clean
 # for file in os.listdir('data'):
 #to_xlsx
-
+#make sure directory has CLEAN file named 'data'
 forward = ['forwardTime 1', 'forwardTime 2', 'forwardTime 3', 'forwardTime 4', 'forwardTime 5',
        'forwardTime 6']
 basis = ['basis 1', 'basis 2', 'basis 3', 'basis 4', 'basis 5',
        'basis 6']
 #values that do not have rep basis
 w_basis_issue = {}
+file = input("input name of file to process and press enter: ")
+type = clean(file)
 
-dict = {}
+def to_dict(type):
+    """
+    input (string): dataset that you want to clean and use for analysis
 
-for files in os.listdir('data'):
-    dict[files] = pd.read_csv('data/'+files)
+    """
+    dict = {}
+    if type == 'xlsx':
+        for files in os.listdir('data'):
+                dict[files] = pd.read_excel('data/'+files)
+    if type == 'csv':
+        for files in os.listdir('data'):
+             dict[files] = pd.read_csv('data/'+files)
+    return dict
 
+
+dict = to_dict(type)
 n = len(dict)
+
 def rocp(k):
     df1 = {}
     for x in dict:
@@ -36,6 +51,9 @@ def factor1():
     df1.fillna(df1.mean(axis=1), inplace=True)
     rv = df1.sum(axis=1)/n
     rv.name = 'Factor 1'
+    # t = r.columns[0]
+    # r['Date'] = dict[r]['Date']
+    # x = x[['Date',t]]
     return rv.to_frame()
 
 def factor2(average = False):
@@ -167,14 +185,27 @@ def all(truncate =None):
     """
     rv = [factor1(),factor2(),factor3(),factor4()]
     rv1 = []
+    y = [x for x in dict.keys()]
+    y = y[0]
     for x in rv:
+        dict.keys()
         x = x.truncate(after = truncate)
         rv1.append(x)
     return rv1
 
-def all_to_xl(truncate = None):
+def get_all_signal(truncate = None):
     names = ['Factor 1','Factor 2','Factor 3','Factor 4']
     writer=pd.ExcelWriter('output.xlsx')
-    for i, A in enumerate(all(truncate)):
+    a = all(truncate)
+    for i, A in enumerate(a):
         A.to_excel(writer,sheet_name="{0}".format(names[i]))
     writer.save()
+    return a
+
+def test():
+    names = ['one', 'two']
+    secw = pd.ExcelWriter('test')
+    for i. A in enumerate([factor1(), factor2()]):
+        A.to_excel(secw, sheet_name="{}".format[names[i]])
+    secw.save()
+    return factor1()
