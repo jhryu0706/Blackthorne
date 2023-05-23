@@ -194,6 +194,10 @@ def all(truncate =None):
     return rv1
 
 def get_all_signal(truncate = None):
+    """
+    You can add a value x for truncate (ex: get_all_signal(4)) to 
+    get only the first x rows of results. Helpful for troubleshooting.
+    """
     names = ['Factor 1','Factor 2','Factor 3','Factor 4']
     writer=pd.ExcelWriter('output.xlsx')
     a = all(truncate)
@@ -201,11 +205,3 @@ def get_all_signal(truncate = None):
         A.to_excel(writer,sheet_name="{0}".format(names[i]))
     writer.save()
     return a
-
-def test():
-    names = ['one', 'two']
-    secw = pd.ExcelWriter('test')
-    for i. A in enumerate([factor1(), factor2()]):
-        A.to_excel(secw, sheet_name="{}".format[names[i]])
-    secw.save()
-    return factor1()
